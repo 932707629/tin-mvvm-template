@@ -1,0 +1,27 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>me.soushin.tin-mvvm</id>
+    <name>TinMVVM</name>
+    <vendor>soushin</vendor>
+
+    <!-- Product and plugin compatibility requirements -->
+    <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="me.soushin.template.services.MyApplicationService"/>
+        <projectService serviceImplementation="me.soushin.template.services.MyProjectService"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="me.soushin.template.listeners.MyProjectManagerListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </applicationListeners>
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="me.soushin.tinmvvm.SamplePluginTemplateProviderImpl" />
+    </extensions>
+
+</idea-plugin>
