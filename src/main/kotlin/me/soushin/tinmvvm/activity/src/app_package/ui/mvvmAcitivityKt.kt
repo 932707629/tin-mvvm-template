@@ -23,7 +23,7 @@ class ${activityClass}Activity : DataBindingActivity<Activity${activityClass}Bin
     //配置当前页面的内容 各项参数都可为空
     //BR.xxxxViewModel是kotlin-kapt插件默认生成的 对应xml文件里的xxxxViewModel
     override fun getDataBindingConfig(): DataBindingConfig? {
-        return DataBindingConfig(layoutId = R.layout.${layoutName},variableId = BR.${activityClass}ViewModel,
+        return DataBindingConfig(layoutId = R.layout.${layoutName},variableId = BR.${activityClass}VM,
         vmClass = ${activityClass}ViewModel::class.java);
     }
     

@@ -27,7 +27,7 @@ public class ${activityClass}Activity extends DataBindingActivity<Activity${acti
     @Nullable
     @Override
     public DataBindingConfig getDataBindingConfig() {
-        return new DataBindingConfig(R.layout.${layoutName}, BR.${activityClass}ViewModel,${activityClass}ViewModel.class);
+        return new DataBindingConfig(R.layout.${layoutName}, BR.${activityClass}VM,${activityClass}ViewModel.class);
     }
     
 }

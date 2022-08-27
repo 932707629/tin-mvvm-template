@@ -11,7 +11,7 @@ fun mvvmXml(
 
     <data>
         <variable
-            name="${fragmentClass}ViewModel"
+            name="${fragmentClass}VM"
             type="${packageName}.viewmodel.${fragmentClass}ViewModel" />
     </data>
 

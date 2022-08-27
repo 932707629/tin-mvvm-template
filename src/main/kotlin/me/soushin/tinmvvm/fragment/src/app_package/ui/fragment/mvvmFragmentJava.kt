@@ -35,7 +35,7 @@ public class ${fragmentClass}Fragment extends DataBindingFragment<Fragment${frag
     @Override
     public DataBindingConfig getDataBindingConfig() {
         //演示addBindingParam()的用法
-        return new DataBindingConfig(R.layout.${layoutName}, BR.${fragmentClass}ViewModel,${fragmentClass}ViewModel.class);
+        return new DataBindingConfig(R.layout.${layoutName}, BR.${fragmentClass}VM,${fragmentClass}ViewModel.class);
     }
 
     public static ${fragmentClass}Fragment newInstance(){
