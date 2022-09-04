@@ -21,17 +21,6 @@ fun RecipeExecutor.mvvmActivityRecipe(
 ) {
     val (projectData, srcOut, resOut) = moduleData
     val ktOrJavaExt = language.extension//projectData.language.extension
-    generateManifest(
-            moduleData = moduleData,
-            activityClass = "${activityClass}Activity",
-//            activityTitle = activityClass,
-            packageName = "${packageName}.ui",
-            isLauncher = false,
-            hasNoActionBar = false,
-            generateActivityTitle = true,
-//            requireTheme = false,
-//            useMaterial2 = false
-    )
 
     if (language == Language.Kotlin){
         //applicationPackage
@@ -60,5 +49,19 @@ fun RecipeExecutor.mvvmActivityRecipe(
         //保存model
 //    save(mvvmModel(packageName, activityClass), srcOut.resolve("model/${activityClass}Model.${ktOrJavaExt}"))
     }
+
+    generateManifest(
+        moduleData = moduleData,
+        activityClass = "${activityClass}Activity",
+//            activityTitle = activityClass,
+        packageName = "$packageName.ui",
+        isLauncher = false,
+        hasNoActionBar = false,
+        generateActivityTitle = true,
+//            requireTheme = false,
+//            useMaterial2 = false
+//            isResizeable = false
+    )
+
 
 }

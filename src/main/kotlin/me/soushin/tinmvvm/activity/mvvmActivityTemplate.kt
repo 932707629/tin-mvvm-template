@@ -1,9 +1,11 @@
 package me.soushin.tinmvvm.activity
 
+import android.text.TextUtils
 import com.android.tools.idea.wizard.template.WizardUiContext
 import com.android.tools.idea.wizard.template.template
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
+import org.gradle.util.TextUtil
 import java.lang.StringBuilder
 
 val mvvmActivityTemplate get() = template {
