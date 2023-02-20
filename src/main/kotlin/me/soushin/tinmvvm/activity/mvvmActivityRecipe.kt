@@ -11,6 +11,7 @@ import me.soushin.tinmvvm.common.repository.mvvmRepositoryKt
 import me.soushin.tinmvvm.common.res.layout.mvvmXml
 import me.soushin.tinmvvm.common.viewmodel.mvvmViewModelJava
 import me.soushin.tinmvvm.common.viewmodel.mvvmViewModelKt
+import java.io.File
 
 fun RecipeExecutor.mvvmActivityRecipe(
     moduleData: ModuleTemplateData,
@@ -50,18 +51,24 @@ fun RecipeExecutor.mvvmActivityRecipe(
 //    save(mvvmModel(packageName, activityClass), srcOut.resolve("model/${activityClass}Model.${ktOrJavaExt}"))
     }
 
-    generateManifest(
-        moduleData = moduleData,
-        activityClass = "${activityClass}Activity",
-//            activityTitle = activityClass,
-        packageName = "$packageName.ui",
-        isLauncher = false,
-        hasNoActionBar = false,
-        generateActivityTitle = true,
-//            requireTheme = false,
-//            useMaterial2 = false
-//            isResizeable = false
-    )
+//    generateManifest(
+//        moduleData = moduleData,
+//        activityClass = "${activityClass}Activity",
+////            activityTitle = activityClass,
+//        packageName = "$packageName.ui",
+//        isLauncher = false,
+//        hasNoActionBar = false,
+//        activityThemeName = "",
+//        isNewModule = false,
+//        isLibrary = false,
+//        manifestOut = null,
+//        generateActivityTitle = true,
+//        isResizeable = false,
+//        libraryName = "",
+////            requireTheme = false,
+////            useMaterial2 = false
+////            isResizeable = false
+//    )
 
 
 }
