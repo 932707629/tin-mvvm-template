@@ -1,12 +1,10 @@
 package me.soushin.tinmvvm.activity
 
-import android.text.TextUtils
 import com.android.tools.idea.wizard.template.WizardUiContext
 import com.android.tools.idea.wizard.template.template
 import com.android.tools.idea.wizard.template.*
 import com.android.tools.idea.wizard.template.impl.activities.common.MIN_API
-import org.gradle.util.TextUtil
-import java.lang.StringBuilder
+import me.soushin.tinmvvm.fragment.createFileLowerName
 
 val mvvmActivityTemplate get() = template {
 //    revision = 1
@@ -30,7 +28,7 @@ val mvvmActivityTemplate get() = template {
         default = "activity_main"
         help = "请输入布局的名字"
         constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
-        suggest = { activityToLayout(createLayoutName(activityClass.value)) }
+        suggest = { activityToLayout(createFileLowerName(activityClass.value)) }
     }
 
     val packageName = stringParameter {
@@ -63,21 +61,4 @@ val mvvmActivityTemplate get() = template {
             language.value,
         )
     }
-}
-
-fun createLayoutName(className:String):String{
-    val array=className.toCharArray()
-    val string= StringBuilder()
-    array.forEach {
-        if (it.isUpperCase()){
-            //第一个首字母大写的话 不加下划线
-            if (string.isNotEmpty()){
-                string.append("_")
-            }
-            string.append(it.toLowerCase())
-        }else {
-            string.append(it)
-        }
-    }
-    return string.toString()
 }

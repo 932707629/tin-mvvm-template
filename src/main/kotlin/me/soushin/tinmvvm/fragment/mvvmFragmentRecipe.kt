@@ -32,29 +32,30 @@ fun RecipeExecutor.mvvmFragmentRecipe(
 //            useMaterial2 = false
 //    )
 //applicationPackage
+    val lowerPkgName = createFileLowerName(fragmentClass)
     if (language==Language.Kotlin){
-        val mvvmFragment = mvvmFragmentKt(projectData.applicationPackage, fragmentClass, layoutName, packageName)
+        val mvvmFragment = mvvmFragmentKt(projectData.applicationPackage, fragmentClass, lowerPkgName, layoutName, packageName)
         // 保存fragment
-        save(mvvmFragment, srcOut.resolve("ui/fragment/${fragmentClass}Fragment.${ktOrJavaExt}"))
+        save(mvvmFragment, srcOut.resolve("${lowerPkgName}/${fragmentClass}Fragment.${ktOrJavaExt}"))
         // 保存xml
-        save(mvvmXml(packageName, fragmentClass), resOut.resolve("layout/${layoutName}.xml"))
+        save(mvvmXml(packageName, fragmentClass,lowerPkgName), resOut.resolve("layout/${layoutName}.xml"))
         // 保存viewmodel
-        save(mvvmViewModelKt(packageName, fragmentClass), srcOut.resolve("viewmodel/${fragmentClass}ViewModel.${ktOrJavaExt}"))
+        save(mvvmViewModelKt(packageName, fragmentClass,lowerPkgName), srcOut.resolve("${lowerPkgName}/${fragmentClass}ViewModel.${ktOrJavaExt}"))
 //     保存repository
-        save(mvvmRepositoryKt(packageName, fragmentClass), srcOut.resolve("repository/${fragmentClass}Repository.${ktOrJavaExt}"))
+        save(mvvmRepositoryKt(packageName, fragmentClass,lowerPkgName), srcOut.resolve("${lowerPkgName}/${fragmentClass}Repository.${ktOrJavaExt}"))
         //保存Model
         //    save(mvvmModel(packageName, activityClass), srcOut.resolve("model/${activityClass}Model.${ktOrJavaExt}"))
 
     }else if (language == Language.Java){
-        val mvvmFragment = mvvmFragmentJava(projectData.applicationPackage, fragmentClass, layoutName, packageName)
+        val mvvmFragment = mvvmFragmentJava(projectData.applicationPackage, fragmentClass, lowerPkgName, layoutName, packageName)
         // 保存fragment
-        save(mvvmFragment, srcOut.resolve("ui/fragment/${fragmentClass}Fragment.${ktOrJavaExt}"))
+        save(mvvmFragment, srcOut.resolve("${lowerPkgName}/${fragmentClass}Fragment.${ktOrJavaExt}"))
         // 保存xml
-        save(mvvmXml(packageName, fragmentClass), resOut.resolve("layout/${layoutName}.xml"))
+        save(mvvmXml(packageName, fragmentClass,lowerPkgName), resOut.resolve("layout/${layoutName}.xml"))
         // 保存viewmodel
-        save(mvvmViewModelJava(packageName, fragmentClass), srcOut.resolve("viewmodel/${fragmentClass}ViewModel.${ktOrJavaExt}"))
+        save(mvvmViewModelJava(packageName, fragmentClass,lowerPkgName), srcOut.resolve("${lowerPkgName}/${fragmentClass}ViewModel.${ktOrJavaExt}"))
 //     保存repository
-        save(mvvmRepositoryJava(packageName, fragmentClass), srcOut.resolve("repository/${fragmentClass}Repository.${ktOrJavaExt}"))
+        save(mvvmRepositoryJava(packageName, fragmentClass, lowerPkgName), srcOut.resolve("${lowerPkgName}/${fragmentClass}Repository.${ktOrJavaExt}"))
         //保存Model
         //    save(mvvmModel(packageName, activityClass), srcOut.resolve("model/${activityClass}Model.${ktOrJavaExt}"))
     }

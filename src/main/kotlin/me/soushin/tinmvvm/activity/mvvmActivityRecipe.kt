@@ -11,6 +11,7 @@ import me.soushin.tinmvvm.common.repository.mvvmRepositoryKt
 import me.soushin.tinmvvm.common.res.layout.mvvmXml
 import me.soushin.tinmvvm.common.viewmodel.mvvmViewModelJava
 import me.soushin.tinmvvm.common.viewmodel.mvvmViewModelKt
+import me.soushin.tinmvvm.fragment.createFileLowerName
 import java.io.File
 
 fun RecipeExecutor.mvvmActivityRecipe(
@@ -22,31 +23,32 @@ fun RecipeExecutor.mvvmActivityRecipe(
 ) {
     val (projectData, srcOut, resOut) = moduleData
     val ktOrJavaExt = language.extension//projectData.language.extension
+    val lowerPkgName = createFileLowerName(activityClass)
 
     if (language == Language.Kotlin){
         //applicationPackage
-        val mvvmActivity = mvvmActivityKt(projectData.applicationPackage, activityClass, layoutName, packageName)
+        val mvvmActivity = mvvmActivityKt(projectData.applicationPackage, activityClass, lowerPkgName, layoutName, packageName)
         // 保存Activity
-        save(mvvmActivity, srcOut.resolve("ui/${activityClass}Activity.${ktOrJavaExt}"))
+        save(mvvmActivity, srcOut.resolve("${lowerPkgName}/${activityClass}Activity.${ktOrJavaExt}"))
         // 保存xml
-        save(mvvmXml(packageName, activityClass), resOut.resolve("layout/${layoutName}.xml"))
+        save(mvvmXml(packageName, activityClass, lowerPkgName), resOut.resolve("layout/${layoutName}.xml"))
         // 保存viewmodel
-        save(mvvmViewModelKt(packageName, activityClass), srcOut.resolve("viewmodel/${activityClass}ViewModel.${ktOrJavaExt}"))
+        save(mvvmViewModelKt(packageName, activityClass, lowerPkgName), srcOut.resolve("${lowerPkgName}/${activityClass}ViewModel.${ktOrJavaExt}"))
         // 保存repository
-        save(mvvmRepositoryKt(packageName, activityClass), srcOut.resolve("repository/${activityClass}Repository.${ktOrJavaExt}"))
+        save(mvvmRepositoryKt(packageName, activityClass, lowerPkgName), srcOut.resolve("${lowerPkgName}/${activityClass}Repository.${ktOrJavaExt}"))
         //保存model
 //    save(mvvmModel(packageName, activityClass), srcOut.resolve("model/${activityClass}Model.${ktOrJavaExt}"))
     }else if (language == Language.Java){
         //applicationPackage
-        val mvvmActivity = mvvmActivityJava(projectData.applicationPackage, activityClass, layoutName, packageName)
+        val mvvmActivity = mvvmActivityJava(projectData.applicationPackage, activityClass, lowerPkgName, layoutName, packageName)
         // 保存Activity
-        save(mvvmActivity, srcOut.resolve("ui/${activityClass}Activity.${ktOrJavaExt}"))
+        save(mvvmActivity, srcOut.resolve("${lowerPkgName}/${activityClass}Activity.${ktOrJavaExt}"))
         // 保存xml
-        save(mvvmXml(packageName, activityClass), resOut.resolve("layout/${layoutName}.xml"))
+        save(mvvmXml(packageName, activityClass, lowerPkgName), resOut.resolve("layout/${layoutName}.xml"))
         // 保存viewmodel
-        save(mvvmViewModelJava(packageName, activityClass), srcOut.resolve("viewmodel/${activityClass}ViewModel.${ktOrJavaExt}"))
+        save(mvvmViewModelJava(packageName, activityClass, lowerPkgName), srcOut.resolve("${lowerPkgName}/${activityClass}ViewModel.${ktOrJavaExt}"))
         // 保存repository
-        save(mvvmRepositoryJava(packageName, activityClass), srcOut.resolve("repository/${activityClass}Repository.${ktOrJavaExt}"))
+        save(mvvmRepositoryJava(packageName, activityClass, lowerPkgName), srcOut.resolve("${lowerPkgName}/${activityClass}Repository.${ktOrJavaExt}"))
         //保存model
 //    save(mvvmModel(packageName, activityClass), srcOut.resolve("model/${activityClass}Model.${ktOrJavaExt}"))
     }

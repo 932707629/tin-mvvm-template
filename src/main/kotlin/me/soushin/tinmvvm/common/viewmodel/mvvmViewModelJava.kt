@@ -2,12 +2,13 @@ package me.soushin.tinmvvm.common.viewmodel
 
 fun mvvmViewModelJava(
     packageName:String,
-    clazz:String
+    clazz:String,
+    lowerPkgName:String,
 )="""
-package ${packageName}.viewmodel;
+package ${packageName}.${lowerPkgName};
 
 import android.app.Application;
-import ${packageName}.repository.${clazz}Repository;
+import ${packageName}.${lowerPkgName}.${clazz}Repository;
 import org.jetbrains.annotations.NotNull;
 import me.soushin.tinmvvm.base.BaseViewModel;
 

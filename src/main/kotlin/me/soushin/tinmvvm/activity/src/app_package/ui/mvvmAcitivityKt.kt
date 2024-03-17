@@ -4,16 +4,17 @@ package me.soushin.tinmvvm.activity.src.app_package.ui
 fun mvvmActivityKt(
     applicationPackage:String?,
     activityClass:String,
+    lowerPkgName:String,
     layoutName:String,
     packageName:String
 )="""
-package ${packageName}.ui
+package ${packageName}.${lowerPkgName}
 
 import android.os.Bundle
 import ${applicationPackage}.BR
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.Activity${activityClass}Binding
-import ${applicationPackage}.mvvm.viewmodel.${activityClass}ViewModel
+import ${applicationPackage}.mvvm.${lowerPkgName}.${activityClass}ViewModel
 import me.soushin.tinmvvm.base.DataBindingActivity
 import me.soushin.tinmvvm.config.DataBindingConfig
 
@@ -32,5 +33,5 @@ class ${activityClass}Activity : DataBindingActivity<Activity${activityClass}Bin
     }
 
     
-    } 
+} 
 """

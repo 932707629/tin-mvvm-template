@@ -4,17 +4,18 @@ package me.soushin.tinmvvm.fragment.src.app_package.ui.fragment
 fun mvvmFragmentJava(
     applicationPackage: String?,
     fragmentClass: String,
+    lowerPkgName: String,
     layoutName: String,
     packageName: String
 ) = """
-package ${packageName}.ui.fragment;
+package ${packageName}.${lowerPkgName};
 
 import android.os.Bundle;
 import android.view.View;
 import ${applicationPackage}.BR;
 import ${applicationPackage}.R;
 import ${applicationPackage}.databinding.Fragment${fragmentClass}Binding;
-import ${applicationPackage}.mvvm.viewmodel.${fragmentClass}ViewModel;
+import ${applicationPackage}.mvvm.${lowerPkgName}.${fragmentClass}ViewModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

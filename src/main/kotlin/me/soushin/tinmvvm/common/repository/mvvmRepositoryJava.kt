@@ -2,9 +2,11 @@ package me.soushin.tinmvvm.common.repository
 
 fun mvvmRepositoryJava(
     packageName:String,
-    clazz:String
+    clazz:String,
+    lowerPkgName:String,
+
 )="""
-package ${packageName}.repository;
+package ${packageName}.${lowerPkgName};
 
 import me.soushin.tinmvvm.base.BaseRepository;
 

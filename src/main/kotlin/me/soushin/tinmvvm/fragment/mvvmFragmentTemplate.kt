@@ -28,7 +28,7 @@ val mvvmFragmentTemplate
             default = "activity_main"
             help = "请输入布局的名字"
             constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
-            suggest = { fragmentToLayout(createLayoutName(fragmentClass.value)) }
+            suggest = { fragmentToLayout(createFileLowerName(fragmentClass.value)) }
         }
 
         val language= enumParameter<Language> {
@@ -64,7 +64,7 @@ val mvvmFragmentTemplate
         }
     }
 
-fun createLayoutName(className:String):String{
+fun createFileLowerName(className:String):String{
     val array=className.toCharArray()
     val string= StringBuilder()
     array.forEach {
